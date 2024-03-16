@@ -7,9 +7,18 @@ commands:
   install:
     steps:
       - run: git config --global core.autocrlf input
+      - restore_cache:
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
       - node/install:
           node-version: '18.15.0'
       - checkout
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
   run-lint-and-build:
     steps:
       - node/install-packages
