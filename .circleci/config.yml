@@ -79,7 +79,7 @@ jobs:
         enum: ['x64', 'arm64']
     executor: << parameters.executor >>
     steps:
-      - install
+      # - install
       - when:
           condition:
             equal: [node/linux, << parameters.executor >>]
@@ -112,7 +112,7 @@ jobs:
     executor: << parameters.executor >>
     parallelism: 2
     steps:
-      - install
+      # - install
       - when:
           condition:
             equal: [node/windows, << parameters.executor >>]
