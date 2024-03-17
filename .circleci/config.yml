@@ -7,14 +7,15 @@ commands:
   install:
     steps:
       - run: git config --global core.autocrlf input
+      - node/install:
+          node-version: '18.15.0'
+      - checkout
       - restore_cache:
           keys:
             - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-packages-v1-{{ .Branch }}-
             - yarn-packages-v1-
-      - node/install:
-          node-version: '18.15.0'
-      - checkout
+      - run: yarn install --frozen-lockfile
       - save_cache:
           paths:
             - ~/.cache/yarn
