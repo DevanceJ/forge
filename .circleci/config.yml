@@ -11,15 +11,18 @@ commands:
           node-version: '18.15.0'
       - checkout
       - restore_cache:
+          name: Restore Yarn Package Cache
           keys:
-            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-packages-v1-{{ .Branch }}-
-            - yarn-packages-v1-
-      - run: yarn install --frozen-lockfile
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
       - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
-          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            # - ~/.cache/yarn
+            - node_modules
   run-lint-and-build:
     steps:
       - node/install-packages
