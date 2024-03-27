@@ -22,7 +22,8 @@ commands:
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
   run-lint-and-build:
     steps:
-      - node/install-packages
+      - node/install-packages:
+          with-cache: true
       - run:
           name: 'Lint codebase'
           command: |
