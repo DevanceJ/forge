@@ -38,7 +38,7 @@ commands:
   run-fast-tests:
     steps:
       - node/install-packages:
-          with-cache: false
+          with-cache: true
       - attach_workspace:
           at: .
       - run:
@@ -49,7 +49,7 @@ commands:
   run-slow-tests:
     steps:
       - node/install-packages:
-          with-cache: false
+          with-cache: true
       - attach_workspace:
           at: .
       - run:
