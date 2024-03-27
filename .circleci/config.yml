@@ -22,8 +22,6 @@ commands:
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
   run-lint-and-build:
     steps:
-      - node/install-packages:
-          with-cache: true
       - run:
           name: 'Lint codebase'
           command: |
@@ -35,8 +33,6 @@ commands:
             yarn build
   run-fast-tests:
     steps:
-      - node/install-packages:
-          with-cache: true
       - attach_workspace:
           at: .
       - run:
@@ -46,8 +42,6 @@ commands:
 
   run-slow-tests:
     steps:
-      - node/install-packages:
-          with-cache: true
       - attach_workspace:
           at: .
       - run:
