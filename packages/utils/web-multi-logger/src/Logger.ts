@@ -56,7 +56,7 @@ export default class Logger {
   }
 
   /**
-   * Stop the HTTP server hosting the web UI
+   * Stop the HTTP server hosting the web UI.
    */
   stop(): void {
     if (this.server) this.server.close();
