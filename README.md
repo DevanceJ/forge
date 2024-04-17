@@ -15,4 +15,6 @@ Simple interactive command line prompt to gather boolean input from users.
 
 ### Interactive `init`
 
-<img width="769" alt="image" src="https://github.com/DevanceJ/forge/assets/89126135/6a628f49-bf71-43c6-904f-3016a0925f8b">
+
+https://github.com/DevanceJ/forge/assets/89126135/6994bf29-db5f-46fc-a317-c5b6b2fe77a9
+
